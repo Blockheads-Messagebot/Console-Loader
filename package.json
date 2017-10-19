@@ -1,0 +1,25 @@
+{
+  "name": "Console-Loader",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Bibliofile <Bibliofilegit@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@bhmb/bot": "^7.0.4",
+    "@bhmb/messages": "^1.0.6",
+    "@std/esm": "^0.11.3",
+    "@types/node": "^8.0.34",
+    "blockheads-api": "^0.3.7",
+    "fetch-cookie": "^0.7.0",
+    "node-fetch": "^1.7.3",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
+  },
+  "scripts": {
+    "cloud": "node -r ts-node/register src/cloud.ts",
+    "mac": "node -r ts-node/register src/mac.ts",
+    "worlds": "node -r ts-node/register src/worlds.ts",
+    "worlds:mac": "node -r ts-node/register src/worlds_mac.ts"
+  }
+}

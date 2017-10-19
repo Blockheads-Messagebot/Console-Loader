@@ -1,0 +1,6 @@
+node_modules
+config/login.js
+.esm-cache
+*.js
+*.js.map
+!config/login.default.js

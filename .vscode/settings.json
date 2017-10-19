@@ -1,0 +1,9 @@
+{
+    "files.exclude": {
+        "node_modules": true,
+        ".vscode": true,
+        ".esm-cache": true,
+        "src/*.js": true,
+        "src/*.js.map": true
+    }
+}
