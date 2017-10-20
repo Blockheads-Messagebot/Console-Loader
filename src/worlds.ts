@@ -3,7 +3,7 @@ require = require('@std/esm')(module)
 import { setFetch, login, getWorlds } from 'blockheads-api/cloud'
 setFetch(require('fetch-cookie/node-fetch')(require('node-fetch')))
 
-import { user, pass } from '../config/login.js'
+import { user, pass } from './config'
 
 async function main() {
     try {

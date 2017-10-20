@@ -2,7 +2,7 @@ import { Storage as AStorage } from '@bhmb/bot'
 import { join } from 'path'
 import { writeFileSync, readFileSync, existsSync } from 'fs'
 
-const jsonPath = join(__dirname, '..', 'config', 'localStorage.js')
+const jsonPath = join(__dirname, '..', 'config', 'localStorage.json')
 let fileStorage = new Map<string, string>()
 let lastSave = Date.now()
 let lastChange = 0
@@ -35,7 +35,7 @@ setInterval(() => {
         }
 
         try {
-            writeFileSync(jsonPath, objMap, 'utf8')
+            writeFileSync(jsonPath, JSON.stringify(objMap, null, 4), 'utf8')
         } catch (e) {
             console.error('Failed to save config', e)
         }

@@ -1,6 +1,8 @@
 node_modules
-config/login.js
+config/config.json
+config/localStorage.json
 .esm-cache
+.rpt2_cache
 *.js
 *.js.map
-!config/login.default.js
+build

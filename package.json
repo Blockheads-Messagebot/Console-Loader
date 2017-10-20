@@ -12,14 +12,15 @@
     "blockheads-api": "^0.3.7",
     "fetch-cookie": "^0.7.0",
     "node-fetch": "^1.7.3",
-    "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
     "typescript": "^2.5.3"
   },
   "scripts": {
-    "cloud": "node -r ts-node/register src/cloud.ts",
-    "mac": "node -r ts-node/register src/mac.ts",
-    "worlds": "node -r ts-node/register src/worlds.ts",
-    "worlds:mac": "node -r ts-node/register src/worlds_mac.ts"
+    "cloud": "node build/cloud.js",
+    "mac": "node build/mac.js",
+    "worlds": "node build/worlds.js",
+    "worlds:mac": "node build/worlds_mac.js",
+    "build": "tsc",
+    "clean": "rm -r build"
   }
 }
