@@ -55,7 +55,7 @@ export class Storage extends AStorage {
         } catch {
             result = fallback
         }
-        return result == null ? result : fallback
+        return result == null ? fallback : result
     }
 
     set(key: string, value: any): void {
