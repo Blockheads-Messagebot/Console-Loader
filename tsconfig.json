@@ -14,5 +14,8 @@
         "strictNullChecks": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true
-    }
+    },
+    "exclude": [
+        "extensions"
+    ]
 }

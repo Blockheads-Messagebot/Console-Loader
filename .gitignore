@@ -6,3 +6,5 @@ config/localStorage.json
 *.js
 *.js.map
 build
+extensions/*
+!extensions/.gitkeep

@@ -1,13 +1,16 @@
 import { MessageBot } from '@bhmb/bot'
 import * as fs from 'fs'
 import { join } from 'path'
-import { promisify } from 'util'
-import { spawn } from 'child_process'
-const clone = (repo: string, path: string) => promisify(spawn)('git', [
-    'clone',
-    repo,
-    path
-], undefined)
+import { spawn, ChildProcess } from 'child_process'
+const clone = (repo: string, path: string) => new Promise<void>((resolve, reject) => {
+    let cp: ChildProcess
+    if (fs.existsSync(path)) {
+        cp = spawn('git', ['-C', path, 'pull', repo])
+    } else {
+        cp = spawn('git', ['clone', repo, path])
+    }
+    cp.on('exit', code => code ? reject(code) : resolve())
+})
 
 interface ExtensionInfo {
     user: string
@@ -72,7 +75,12 @@ MessageBot.registerExtension('extensions', ex => {
     }
 
     function load(id: string) {
-        let info = extensionMap.get(id) as ExtensionInfo
+        let info = extensionMap.get(id)
+        if (!info) {
+            log(`Error: Extension with id ${id} not found.`)
+            return
+        }
+
         shouldLoad.add(id)
         if (/\.(m?js|es)/.test(info.package)) {
             // Single script file, download and require
@@ -88,15 +96,20 @@ MessageBot.registerExtension('extensions', ex => {
                 .then(r => r.text())
                 .then(s => fs.writeFileSync(file, s,))
                 .then(() => require(file))
+                .catch(log)
         } else if (/https?:\/\//.test(info.package)) {
             // Git repo, clone into extension dir and execute
             const dir = extensionDir + `/${id}`
             clone(info.package, dir)
                 .then(() => require(dir))
+                .catch(log)
         } else {
             // Npm package, install & execute
-            promisify(spawn)('npm', ['install', info.package], undefined)
-                .then(() => require(info.package))
+            log('Unsupported install method for', id)
+            // Untested
+            // promisify(spawn)('npm', ['install', info.package], undefined)
+            //     .then(() => require(info.package))
+            //     .catch(log)
         }
     }
 
@@ -144,4 +157,5 @@ MessageBot.registerExtension('extensions', ex => {
             ex.storage.get<string[]>('autoload', [])
                 .forEach(load)
         })
+        .catch(log)
 })
