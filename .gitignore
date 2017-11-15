@@ -8,3 +8,4 @@ config/localStorage.json
 build
 extensions/*
 !extensions/.gitkeep
+.DS_STORE

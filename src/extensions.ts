@@ -24,7 +24,7 @@ interface ExtensionInfo {
 const log = (...messages: any[]) => console.log('[Extensions]', ...messages)
 
 const extensionDir = join(__dirname, '..', 'extensions')
-const defaultRepo = `https://raw.githubusercontent.com/Blockheads-Messagebot/Extensions/master/extensions.json`
+const defaultRepo = `https://gitcdn.xyz/cdn/Blockheads-Messagebot/Extensions/master/extensions.json`
 
 const flatten = <T>(arr: T[][]): T[] => arr.reduce((carry, item) => carry.concat(item), [])
 

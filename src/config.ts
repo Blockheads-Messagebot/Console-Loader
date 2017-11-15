@@ -1,8 +1,20 @@
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import * as assert from 'assert'
+import { exit } from 'process'
 
-let parsed = JSON.parse(readFileSync(join(__dirname, '..', 'config', 'config.json'), 'utf8'))
+let parsed: any;
+try {
+    parsed = JSON.parse(readFileSync(join(__dirname, '..', 'config', 'config.json'), 'utf8'))
+} catch {
+    console.log('Missing config file.')
+    exit(1)
+} finally {
+    if (!parsed) {
+        console.log('Failed to parse JSON.')
+        exit(1)
+    }
+}
 
 let format = {
     user: 'string',
@@ -18,14 +30,19 @@ let format = {
 function checkTypes(root: any, format: any) {
     for (let key in format) {
         if (['string', 'number'].includes(format[key])) {
-            assert.equal(typeof root[key], format[key], `${key} is incorrectly set.`)
+            assert.equal(typeof root[key], format[key], `${key} is incorrectly set. ${typeof root[key]}`)
         } else {
             checkTypes(root[key], format[key])
         }
     }
 }
 
-checkTypes(parsed, format)
+try {
+    checkTypes(parsed, format)
+} catch (error) {
+    console.log(error.message)
+    exit(1)
+}
 
 export const user: string = parsed.user
 export const pass: string = parsed.pass
