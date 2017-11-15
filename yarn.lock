@@ -2,23 +2,23 @@
 # yarn lockfile v1
 
 
-"@bhmb/bot@^7.0.5":
-  version "7.0.5"
-  resolved "https://registry.yarnpkg.com/@bhmb/bot/-/bot-7.0.5.tgz#43fb0555c821a7269111f6fbb2e7cf2a08fcf793"
+"@bhmb/bot@^7.0.7":
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/@bhmb/bot/-/bot-7.0.7.tgz#25a2473ccdf65a55db5e10ab450bbd425f7fac4b"
   dependencies:
-    blockheads-api "^0.3.2"
+    blockheads-api "^0.3.9"
 
 "@bhmb/messages@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@bhmb/messages/-/messages-1.0.6.tgz#8ca40654913285a557f357cc606aebe45c1213b7"
 
-"@std/esm@^0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.12.1.tgz#d07b7c5e2701beade1e7db74b95484f5d91c46bf"
+"@std/esm@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.15.0.tgz#ffbdeb6dd6834daf6bc8fa095a82681e93786529"
 
-"@types/node@^8.0.46":
-  version "8.0.46"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.46.tgz#6e1766b2d0ed06631d5b5f87bb8e72c8dbb6888e"
+"@types/node@^8.0.52":
+  version "8.0.52"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.52.tgz#8e7f47747868e7687f2cd4922966e2d6af78d22d"
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -54,16 +54,9 @@ big-integer@^1.6.7:
   version "1.6.25"
   resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.25.tgz#1de45a9f57542ac20121c682f8d642220a34e823"
 
-blockheads-api@^0.3.2:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/blockheads-api/-/blockheads-api-0.3.5.tgz#3c4f6595413c7f326a0422bb100abd305466cc09"
-  dependencies:
-    simple-plist "^0.2.1"
-    typed-promisify "^0.4.0"
-
-blockheads-api@^0.3.7:
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/blockheads-api/-/blockheads-api-0.3.7.tgz#683d4a5fbe1dcbec498ddc014addc001032c5de3"
+blockheads-api@^0.3.9:
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/blockheads-api/-/blockheads-api-0.3.9.tgz#0c07774e70b63fd4a0ff506f8a4aa25d1c3a1a6b"
   dependencies:
     simple-plist "^0.2.1"
     typed-promisify "^0.4.0"
@@ -317,9 +310,9 @@ typed-promisify@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/typed-promisify/-/typed-promisify-0.4.0.tgz#ade1d3d32130767ba4ef5385162c720698105d0f"
 
-typescript@^2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.3.tgz#df3dcdc38f3beb800d4bc322646b04a3f6ca7f0d"
+typescript@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.1.tgz#ef39cdea27abac0b500242d6726ab90e0c846631"
 
 wrappy@1:
   version "1.0.2"

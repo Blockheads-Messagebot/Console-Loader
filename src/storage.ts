@@ -64,14 +64,18 @@ export class Storage extends AStorage {
     }
 
     clear(prefix?: string): void {
-        let toRemove: string[] = []
+        this.keys(prefix)
+            .forEach(key => fileStorage.delete(this.head + key))
+    }
+
+    keys(prefix: string = ''): string[] {
+        let keys: string[] = []
         for (let key of fileStorage.keys()) {
             if (key.startsWith(`${this.head}${prefix}`)) {
-                toRemove.push(key)
+                keys.push(key)
             }
         }
-
-        toRemove.forEach(key => fileStorage.delete(key))
+        return keys.map(key => key.substr(this.head.length))
     }
 
     prefix(prefix: string): AStorage {
