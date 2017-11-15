@@ -96,13 +96,13 @@ MessageBot.registerExtension('extensions', ex => {
                 .then(r => r.text())
                 .then(s => fs.writeFileSync(file, s,))
                 .then(() => require(file))
-                .catch(log)
+                .catch(error => log(`Error fetching package`, error))
         } else if (/https?:\/\//.test(info.package)) {
             // Git repo, clone into extension dir and execute
             const dir = extensionDir + `/${id}`
             clone(info.package, dir)
                 .then(() => require(dir))
-                .catch(log)
+                .catch(error => log(`Error cloning package`, error))
         } else {
             // Npm package, install & execute
             log('Unsupported install method for', id)
@@ -157,5 +157,5 @@ MessageBot.registerExtension('extensions', ex => {
             ex.storage.get<string[]>('autoload', [])
                 .forEach(load)
         })
-        .catch(log)
+        .catch(error => log(`Error fetching extension repos`, error))
 })
