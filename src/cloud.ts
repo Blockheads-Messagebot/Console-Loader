@@ -6,6 +6,7 @@ setFetch(fetch)
 
 import { MessageBot } from '@bhmb/bot'
 import '@bhmb/messages'
+import '@bhmb/server'
 import { ExtensionsExports } from './extensions'
 import './extensions'
 import { Storage } from './storage'
@@ -23,7 +24,9 @@ async function main() {
         return
     }
 
-    let bot = new MessageBot(new Storage(), info)
+    let bot = new MessageBot(new Storage(info.id), info)
+    await bot.world.start()
+    bot.addExtension('@bhmb/server')
     bot.addExtension('messages')
     bot.addExtension('extensions');
     (bot.getExports('extensions') as ExtensionsExports).env = 'cloud'
